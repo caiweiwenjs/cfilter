@@ -1,0 +1,19 @@
+#include <font.defs>
+#include <media.defs>
+
+Font *
+
+Manufacturer "Cww"
+ModelName "Virtual Printer"
+Version 1.0
+
+DriverType ps
+
+Filter application/vnd.cups-postscript 100 /home/cww/pcms-0.01/my_filter
+
+*MediaSize Letter
+MediaSize A4
+
+
+PCFileName "vp.ppd"
+

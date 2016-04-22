@@ -1,0 +1,10 @@
+CC=gcc
+INCLUDES=-I/home/cww/Desktop/c-program/mysql -I/usr/local/mysql/include
+LIBS=-L/usr/local/mysql/lib -lmysqlclient `cups-config --libs`
+OBJS=/home/cww/Desktop/c-program/mysql/main.o
+
+my-cups-pdf:
+	${CC} -o $@ mybackend.c ${OBJS} ${INCLUDES} ${LIBS}
+
+clean:
+	rm -rf my-cups-pdf 
