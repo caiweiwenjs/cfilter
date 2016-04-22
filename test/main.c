@@ -30,7 +30,7 @@ int main(int argc, char *agrv[]) {
 
 	cupsFreeDests(num_dests, dests);
 
-
+	/*
 	int job_id;
 	//if ((job_id = cupsPrintFile("Brother_HL-1208_Printer:4", "/home/cww/pcms-0.01/test/main.c", "title_test" ,0, NULL)) == 0) {
 	if ((job_id = cupsPrintFile("CUPS-PDF", "/home/cww/Desktop/copy2.ps", "copy2_test" ,0, NULL)) == 0) {
@@ -39,5 +39,6 @@ int main(int argc, char *agrv[]) {
 		exit(1);
 	}
 	printf("job_id = %d\n", job_id);
+	*/
 	return 0;
 }
