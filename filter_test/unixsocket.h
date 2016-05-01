@@ -5,7 +5,7 @@
 
 #define MAX_CONNECTION_NUMBER 100
 #define MIN_MSG_LEN 1
-#define MAX_MSG_LEN 64
+#define MAX_MSG_LEN 1024
 //for server
 int unix_socket_listen(const  char *servername);
 int unix_socket_accept(int listenfd, uid_t *uidptr);

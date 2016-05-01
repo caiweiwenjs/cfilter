@@ -614,7 +614,18 @@ static void replace_string(char *string) {
 static int preparetitle(char *title) {
   char *cut;
   int i;
-  
+//modified by cww, don't change title except removing enclosing parentheses () 
+ 
+  if (title != NULL) {
+    while (strlen(title)>2 && title[0]=='(' && title[strlen(title)-1]==')') {
+      log_event(CPDEBUG, "removing enclosing parentheses () from full title: %s", title);
+      title[strlen(title)-1]='\0';
+      memmove(title, title+1, strlen(title));
+    }
+  }
+
+
+  /*
   if (title != NULL) {
     if (Conf_DecodeHexStrings) {
       log_event(CPSTATUS, "***Experimental Option: DecodeHexStrings");
@@ -670,6 +681,7 @@ static int preparetitle(char *title) {
     title[Conf_Truncate]='\0';
     log_event(CPDEBUG, "truncating title: %s", title);
   }
+  */
   return strcmp(title, "");
 }
 
@@ -739,7 +751,7 @@ static int preparespoolfile(FILE *fpsrc, char *spoolfile, char *title, char *cmd
     if (rec_depth > 0) {
       (void) fputs(buffer, fpdest);
       if (!is_title && rec_depth == 1 &&
-          sscanf(buffer, "%%%%Title: %"TBUFSIZE"c", title)==1) {
+          sscanf(buffer, "%%%%Title: %"TBUFSIZE"s", title)==1) {
         log_event(CPDEBUG, "found title in ps code: %s", title);
         is_title=1;
       }

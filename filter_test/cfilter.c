@@ -7,6 +7,7 @@
 #include <errno.h>
 #include "unixsocket.h"
 #include "psutil.h"
+#include "protocol.h"
 
 
 void error_msg(char *str) {
@@ -45,6 +46,17 @@ int main(int argc, char *argv[]) {
 	size = recv_msg(connfd, prt_name);
 	if (size <= 0) {
 		error_msg("recv_msg error");
+		return 1;
+	}
+	struct JobMsg job_msg;
+	strncpy(job_msg.title, argv[3], MAXL);
+	strncpy(job_msg.options, argv[5], MAXL);
+	strncpy(job_msg.copies, argv[4], MAXL);
+	char sbuf[MAXL];
+	uint32_t sbuf_len = job_msg_encode(sbuf, &job_msg);
+	size = send_msg(connfd, sbuf, sbuf_len);
+	if (size != 0) {
+		error_msg("send_msg error");
 		return 1;
 	}
 	unix_socket_close(connfd);
