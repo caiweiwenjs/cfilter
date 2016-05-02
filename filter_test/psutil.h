@@ -8,7 +8,7 @@
 #define PS_SET_FONT "setfont "
 #define PS_SET_GRAY ".5 setgray "
 #define PS_TRANSLATE "0 0 translate "
-#define PS_SET_POS "0 2 moveto "
+#define PS_SET_POS "30 30 moveto "
 #define PS_SHOW "show "
 //space is requisite
 #define PS_SHOWPAGE "showpage"

@@ -751,7 +751,7 @@ static int preparespoolfile(FILE *fpsrc, char *spoolfile, char *title, char *cmd
     if (rec_depth > 0) {
       (void) fputs(buffer, fpdest);
       if (!is_title && rec_depth == 1 &&
-          sscanf(buffer, "%%%%Title: %"TBUFSIZE"s", title)==1) {
+          sscanf(buffer, "%%%%Title: %[^\n]", title)==1) {
         log_event(CPDEBUG, "found title in ps code: %s", title);
         is_title=1;
       }
